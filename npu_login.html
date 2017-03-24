@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
+        /* Username/password login fields */
+        input[type=text], input[type=password] {
+            width: 500px;
+            background-color: #999999;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* error message */
+        .error{
+      		color: red;
+      		text-shadow: 0 0 3px #000;
+      		text-align:center;
+      		font-size:14px;
+      		line-height:14px;
+      	}
+
+        /* Center the image and position the close button */
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            position: relative;
+        }
+
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
+
+        .container {
+            padding: 0px;
+            text-align: center;
+            color: black;
+        }
+
+        span.psw {
+            float: right;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(125,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            padding-top: 180px;
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #FFFFFF;
+            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button (x) */
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        /* Add Zoom Animation */
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+
+        @-webkit-keyframes animatezoom {
+            from {-webkit-transform: scale(0)}
+            to {-webkit-transform: scale(1)}
+        }
+
+        @keyframes animatezoom {
+            from {transform: scale(0)}
+            to {transform: scale(1)}
+        }
+
+        /* Change styles for span on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+               display: block;
+               float: none;
+            }
+        }
+
+        /* fancy scrollbar */
+         ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.5);
+        }
+
+        /* banner - school image */
+        #banner {
+            background-image: url("school.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 420px;
+            margin-left: -5px;
+            margin-right: 10px;
+            margin-top: -5px;
+            padding-right: 10px;
+        }
+
+        /* bottom half - section */
+        .section {
+            text-align: center;
+            background-color: #7D0000;
+            padding: 10px;
+            margin-top: 2px;
+            margin-left: -6px;
+            margin-right: -4px;
+            color: white;
+        }
+
+        p {
+            text-indent: 50px;
+        }
+
+        .agreement-text {
+            padding: 0 10px;
+            overflow-y: scroll;
+            text-align: left;
+            font-size: 12px;
+            text-indent: 30px;
+        }
+
+        .continue {
+            text-align: center;
+        }
+
+        button {
+            width: 120px;
+            border-radius: 5px;
+            height: 35px;
+            color: #ffffff;
+            background-color: #333333;
+            text-align: center;
+        }
+
+
+        /* logo */
+        .logo {
+            color: white;
+            height: 50px;
+        }
+
+
+        /* media calls */
+        @media only screen and (max-width: 600px) {
+            input[type=text], input[type=password] {
+              width: 100%;
+            }
+
+            #banner {
+                height: 200px;
+                padding-right: 10px;
+            }
+
+            .modal {
+              padding-top: 80px;
+            }
+
+        }
+
+        @media only screen and (min-width:601px) (max-width: 850px) {
+            #banner {
+                height: 300px;
+                padding-right: 6px;
+                margin-right: 6px;
+            }
+        }
+
+        @media only screen and (max-width: 850px) {
+            .agreement-text {
+                height: 200px;
+            }
+        }
+
+        @media only screen and (min-width: 900px) {
+
+      }
+
+    </style>
+</head>
+
+<body>
+
+
+    <div id="container">
+        <div id="banner">
+
+        </div>
+        <div class="section">
+            <h2>NPU Hotspot Login</h2>
+            <h4>For help configuring an automatic connection, please review our support articles at npusystem.freshdesk.com/support/home</h4>
+            <label><b>Username:</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+          </br>
+          </br>
+            <label><b>Password:</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+          </br>
+          </br>
+
+
+          <h2>NPU WiFi Agreement</h2>
+          <p class="agreement-text">
+              Welcome to our Internet portal. If you choose to continue, you are agreeing to comply with and be bound by the following terms and conditions of use. If you disagree with any part of these terms and conditions, you may not continue.
+              </br>
+              </br></br>  Terms of use:
+
+              </br></br>1. Your use of any information or materials on sites you access is entirely at your own risk, for which we shall not be liable.
+              </br></br>2. You agree that, though this portal, you will not perform any of the following acts:
+              </br></br>   - Attempt to access devices or resources to which you have no explicit, legitimate rights
+              </br></br>   - Copy, reproduce, or transmit any copyrighted files or information other than in accordance with the requirements and allowances of the copyright holder
+              </br></br>   - Launch network attacks of any kind including port scans, DoS/DDoS, packet floods, replays or injections, session hijacking or interception, or other such activity with malicious intent
+              </br></br>   - Transmit malicious software such as viruses, Trojan horses, and worms
+              </br></br>   - Surreptitiously install software or make configuration changes to any device or application, by means of the installation or execution of key loggers, registry keys, or other executable or active application or script
+              </br></br>3. You agree that you will use the access provided here responsibly and with full regard to the safety, security, and privacy of all other users, devices, and resources.
+              </br></br>4. You agree that you will be mindful of the cultural sensitivities of others while using this portal so as not to provoke reaction or offense, and that you will not intentionally access pornographic, graphically violent, hateful, or other offensive
+              </br></br> material (as deemed by us) regardless of others´ sensitivities.
+              </br></br>5. You understand that we reserve the right to log or monitor traffic to ensure that these terms are being followed.
+            </br></br>6. You understand that unauthorized use of resources through this portal may give rise to a claim for damages and/or be a criminal offense.
+          </p>
+
+
+
+            <label><input type="checkbox" id="cbox1" value="accept"> I agree to NPU Terms of Usage</label>
+
+          </br>
+          </br>
+
+            <div class="continue">
+              <form action="npu_success.html" method="post" onsubmit="return validateSubmit(this);">
+              <button type="submit" name="submit" value="Send" id="continuebutton" onclick="onContinue()">Continue</button>
+            </form>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div id="id01" class="modal">
+
+      <form class="modal-content animate" action="/action_page.php">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+        </div>
+
+
+
+    </form>
+  </div>
+
+</div>
+
+      <div class="section" style="
+        background-color: #333;
+        padding: 5px;">
+
+      <img src="logo_white_gimp.png" class="logo">
+    </div>
+</div>
+
+</body>
+
+
+<script>
+
+function formSubmit(evt){
+  // Script for agreement-text
+  // Get the checkbox
+  var check = document.getElementById('cbox1');
+//  alert("check value = "+ check.value);
+  if(check.checked){
+    return true;
+
+}else{
+    alert("Please agree to the Terms of Usage");
+    return false;
+  }
+}
+
+
+</script>
+
+</html>
